@@ -8,7 +8,7 @@ plugins {
 // configure project
 base {
     group = 'gay.pancake'
-    version = '1.0.0'
+    version = '1.0'
 }
 
 java {
@@ -36,7 +36,7 @@ publishing {
     publications {
         // add maven publication
         maven(MavenPublication) {
-            groupId = 'de.pancake'
+            groupId = 'gay.pancake'
             artifactId = 'nvidia-reflex-java'
             version = '1.0'
 
