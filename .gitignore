@@ -1,0 +1,14 @@
+# Gradle files
+.gradle/
+build/
+
+# Eclipse Files
+bin/
+.classpath
+.project
+.metadata
+.settings
+.factorypath
+
+# IDEA Files
+idea/
