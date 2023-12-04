@@ -1,0 +1,62 @@
+plugins {
+    // add java library plugin
+    id 'java-library'
+    // add maven publish plugin
+    id 'maven-publish'
+}
+
+// configure project
+base {
+    group = 'gay.pancake'
+    version = '1.0.0'
+}
+
+java {
+    // configure java compatibility
+    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_21
+
+    // add javadoc and sources jar
+    withJavadocJar()
+    withSourcesJar()
+}
+
+repositories {
+    // add maven central repository
+    mavenCentral()
+}
+
+dependencies {
+    // add jna dependencies
+    api "net.java.dev.jna:jna:5.13.0"
+    api "net.java.dev.jna:jna-platform:5.13.0"
+}
+
+// add maven publish configuration
+publishing {
+    publications {
+        // add maven publication
+        maven(MavenPublication) {
+            groupId = 'de.pancake'
+            artifactId = 'nvidia-reflex-java'
+            version = '1.0'
+
+            from components.java
+        }
+    }
+
+    // add maven repository
+    repositories {
+        // add maven local repository
+        mavenLocal()
+
+        // add mgnetwork repository
+        maven {
+            name = "mgnetwork"
+            url = "https://maven.mgnet.work/main"
+            credentials {
+                username = project.findProperty("mgnetworkUsername")
+                password = project.findProperty("mgnetworkPassword")
+            }
+        }
+    }
+}
